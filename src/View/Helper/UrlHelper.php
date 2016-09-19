@@ -33,11 +33,18 @@ class UrlHelper extends Helper
      *    an array of URL parameters. Using an array for URLs will allow you to leverage
      *    the reverse routing features of CakePHP.
      * @param bool $full If true, the full base URL will be prepended to the result
+     * @param bool $escape If false, the URL will be returned unescaped, do only use if it is manually
+     *    escaped afterwards before being displayed.
      * @return string Full translated URL with base path.
      */
-    public function build($url = null, $full = false)
+    public function build($url = null, $full = false, $escape = true)
     {
-        return h(Router::url($url, $full));
+        $url = Router::url($url, $full);
+        if ($escape) {
+            $url = h($url);
+        }
+
+        return $url;
     }
 
     /**
