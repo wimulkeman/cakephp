@@ -44,7 +44,7 @@ class Security extends Object {
 	function &getInstance() {
 		static $instance = array();
 		if (!$instance) {
-			$instance[0] =& new Security;
+			$instance[0] = new Security;
 		}
 		return $instance[0];
 	}
@@ -111,7 +111,7 @@ class Security extends Object {
  * @static
  */
 	function hash($string, $type = null, $salt = false) {
-		$_this =& Security::getInstance();
+		$_this = Security::getInstance();
 
 		if ($salt) {
 			if (is_string($salt)) {
@@ -155,7 +155,7 @@ class Security extends Object {
  * @see Security::hash()
  */
 	function setHash($hash) {
-		$_this =& Security::getInstance();
+		$_this = Security::getInstance();
 		$_this->hashType = $hash;
 	}
 

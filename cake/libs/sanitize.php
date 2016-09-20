@@ -70,7 +70,7 @@ class Sanitize {
  * @static
  */
 	function escape($string, $connection = 'default') {
-		$db =& ConnectionManager::getDataSource($connection);
+		$db = ConnectionManager::getDataSource($connection);
 		if (is_numeric($string) || $string === null || is_bool($string)) {
 			return $string;
 		}
@@ -295,7 +295,7 @@ class Sanitize {
 					$colType = $curModel->getColumnType($column);
 
 					if ($colType != null) {
-						$db =& ConnectionManager::getDataSource($curModel->useDbConfig);
+						$db = ConnectionManager::getDataSource($curModel->useDbConfig);
 						$colData = $db->columns[$colType];
 
 						if (isset($colData['limit']) && strlen(strval($data)) > $colData['limit']) {

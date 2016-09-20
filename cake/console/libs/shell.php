@@ -238,7 +238,7 @@ class Shell extends Object {
 		}
 
 		if ($this->uses === true && App::import('Model', 'AppModel')) {
-			$this->AppModel =& new AppModel(false, false, false);
+			$this->AppModel = new AppModel(false, false, false);
 			return true;
 		}
 
@@ -256,7 +256,7 @@ class Shell extends Object {
 				if (PHP5) {
 					$this->{$modelClass} = ClassRegistry::init($plugin . $modelClass);
 				} else {
-					$this->{$modelClass} =& ClassRegistry::init($plugin . $modelClass);
+					$this->{$modelClass} = ClassRegistry::init($plugin . $modelClass);
 				}
 			}
 			return true;
@@ -300,14 +300,14 @@ class Shell extends Object {
 			if (ClassRegistry::isKeySet($taskClassCheck)) {
 				$this->taskNames[] = $taskName;
 				if (!PHP5) {
-					$this->{$taskName} =& ClassRegistry::getObject($taskClassCheck);
+					$this->{$taskName} = ClassRegistry::getObject($taskClassCheck);
 				} else {
 					$this->{$taskName} = ClassRegistry::getObject($taskClassCheck);
 				}
 			} else {
 				$this->taskNames[] = $taskName;
 				if (!PHP5) {
-					$this->{$taskName} =& new $taskClass($this->Dispatch);
+					$this->{$taskName} = new $taskClass($this->Dispatch);
 				} else {
 					$this->{$taskName} = new $taskClass($this->Dispatch);
 				}
